@@ -26,4 +26,4 @@ result = if operator == '1'
     Kernel.puts("Invalid Input")
 end
 
-Kernel.puts("The result is #{result}") 
+Kernel.puts("The result is #{result}")
