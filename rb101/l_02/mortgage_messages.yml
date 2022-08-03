@@ -1,0 +1,8 @@
+welcome: 'Welcome to My Mortgage Calc'
+name: 'What is your name?'
+invalid_name: 'Please enter a valid name.'
+begin_calc: 'Thank you! Now we will begin calculating your monthly payment'
+get_amount: 'How much is the total loan?'
+get_apr: 'What is your APR? (5.5% = 5.5)'
+get_duration: '...and how many YEARS is the loan?'
+invalid_num: 'Please enter a valid number'
