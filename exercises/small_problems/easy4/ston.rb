@@ -13,5 +13,13 @@ def string_to_integer(str)
   value
 end
 
-p string_to_integer('4321') == 4321
-p string_to_integer('570') == 570
+def string_to_signed_integer(str)
+  negative = true if str.start_with?('-')
+  str.delete!("+-")
+
+  negative ? -string_to_integer(str) : string_to_integer(str)
+end
+
+p string_to_signed_integer('4321') == 4321
+p string_to_signed_integer('-570') == -570
+p string_to_signed_integer('+100') == 100
