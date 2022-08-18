@@ -1,16 +1,30 @@
-SUITS = ['S', 'H', 'D', 'C'] # spades, hearts, diamonds, clubs
-VALUES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+## Card Data ##
+SUITS = %w(S H D C)
+VALUES = %w(A 2 3 4 5 6 7 8 9 10 J Q K)
 CARD_BACK = "\u{1F0A0}"
 
-TURN_INPUTS = %w(s h) # stay, hit - options for turn inputs
-YES_OR_NO = %w(y n) # yes, no - options when asked to play again
+## Rules ##
+STARTING_CARDS = 2
 
 MAX_HAND_VALUE = 21 # max value a hand can have before 'busting'
 DEALER_MAX = 17 # max value dealer can have before 'staying'
 
 ROUNDS_TO_WIN = 5
 
+ACE_MAX = 11 # high value for an Ace
+ACE_MIN = 1 # low value for an Ace
+ACE_DIFFERENCE = ACE_MAX - ACE_MIN # amount to remove when adjusting ace value
+
+FACE_CARD_VALUE = 10
+
+## Input Options ##
+TURN_INPUTS = %w(s h) # stay, hit - options for turn inputs
+YES_OR_NO = %w(y n) # yes, no - options when asked to play again
+
+## Sleep Times ##
 PAUSE_TIME = 2 # wait time between UI updates
+DRAW_TIME = 1 # time between displaying individual card
+ELIPSIS_TIME = 0.5 # wait time betwen . . .
 
 def prompt(msg)
   puts ">> #{msg}"
@@ -48,6 +62,8 @@ def initialize_deck
   deck.shuffle
 end
 
+# create an array of unicode characters that represent
+# a deck of cards in the same order as above
 def initialize_unicode_deck
   unicode_cards = []
   suit_range = [*('A'..'D')]
@@ -81,16 +97,18 @@ def calculate_hand_total(hand)
     # whining when I used hand_total = 11/10/card.to_i
     # in each conditional
     hand_total += if card == 'A'
-                    11
+                    ACE_MAX
                   elsif card.to_i == 0 # Face card, not Ace
-                    10
+                    FACE_CARD_VALUE
                   else # Standard value card
                     card.to_i
                   end
   end
 
+  # Adjust ace values to the minimum value, one at a time
+  # if total hand value exceeds MAX_HAND_VALUE
   num_aces = hand_values.select { |card| card == 'A' }.count
-  num_aces.times { hand_total -= 10 if hand_total > MAX_HAND_VALUE }
+  num_aces.times { hand_total -= ACE_DIFFERENCE if hand_total > MAX_HAND_VALUE }
 
   hand_total
 end
@@ -114,8 +132,7 @@ def player_turn!(deck, player_hand, dealer_hand)
     display_both_hands(player_hand, dealer_hand)
   end
 
-  print ">> You chose to Stay"
-  print_elipsis(0.7)
+  pause_text("You chose to Stay")
 end
 
 def dealer_turn!(deck, player_hand, dealer_hand)
@@ -140,8 +157,12 @@ end
 
 def hit!(deck, hand)
   hand << draw_card(deck)
-  print ">> Hitting"
-  print_elipsis(0.5)
+  pause_text("Hitting")
+end
+
+def pause_text(text)
+  print ">> #{text}"
+  print_elipsis(ELIPSIS_TIME)
 end
 
 def print_elipsis(time)
@@ -153,7 +174,7 @@ def print_elipsis(time)
 end
 
 def initialize_starting_hands!(deck, player_hand, dealer_hand)
-  2.times do
+  STARTING_CARDS.times do
     player_hand << draw_card(deck)
     dealer_hand << draw_card(deck)
   end
@@ -176,14 +197,14 @@ def display_hand_individually(hand, player=true)
   # and I'm too tired to refactor that xD
   card_graphics = hand.map { |card| card[2] }
   (hand.size).times do |n|
-    sleep(1)
+    sleep(DRAW_TIME)
     if n == 0 && !player
       print "#{CARD_BACK} "
     else
       print "#{card_graphics[n]} "
     end
   end
-  sleep(1)
+  sleep(DRAW_TIME)
   puts "\n\n"
 end
 
