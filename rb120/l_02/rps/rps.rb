@@ -159,7 +159,6 @@ class Computer < Player
                     AIPersonality::HAL9000.new(human),
                     AIPersonality::WALLE.new(human),
                     AIPersonality::Bender.new].sample
-    @personality = AIPersonality::R2D2.new
     super()
     display_personality
   end
