@@ -141,7 +141,7 @@ end
 class Human < Player
   def set_name
     self.name = user_input(MSG["system"]["get_name"], :non_empty)
-    anim_print "Thanks, #{name}! "
+    anim_print("Thanks, #{name}! ")
   end
 
   def choose
@@ -164,9 +164,8 @@ class Computer < Player
   end
 
   def display_personality
-    anim_print "Your opponent is #{personality}, the " \
-               "#{personality.attitude} bot."
-    blank_line
+    anim_print("Your opponent is #{personality}, the " \
+               "#{personality.attitude} bot.", true)
   end
 
   def set_name
@@ -489,8 +488,8 @@ class Match
   attr_writer :current_round, :round_winner, :human_score, :computer_score
 
   def display_round_limit
-    anim_print("You'll be playing first to #{max_score} rounds!")
-    blank_line
+    anim_print("You'll be playing first to #{max_score} rounds! ")
+    anim_print("Let's begin!", true)
   end
 
   def set_winner
@@ -509,8 +508,7 @@ class Match
   end
 
   def display_round_num
-    anim_print "Round: #{current_round}"
-    blank_line
+    anim_print("Round: #{current_round}", true)
     sleep(LONG_PAUSE)
   end
 
