@@ -1,0 +1,25 @@
+system:
+  welcome: "Welcome to Rock, Paper, Scissors, Lizard, Spock!"
+  get_name: "What would you like to be called?"
+  how_many_rounds: "Before we begin, how many rounds to win?"
+  play_again: "Would you like to play another match?"
+  goodbye: "Thanks for playing Rock, Paper, Scissors, Lizard, Spock. Goodbye!"
+
+input:
+  invalid_input: "Sorry, please enter a valid input: "
+  non_empty: "Must be non-empty"
+  positive_numeric: "Must be a number greater than 0"
+  move_values: "First TWO characters as shortcut is OK"
+  yes_or_no: "Please input yes or no"
+
+game:
+  Scissors_Paper: "Scissors cuts Paper!"
+  Paper_Rock: "Paper covers Rock!"
+  Rock_Lizard: "Rock crushes Lizard!"
+  Lizard_Spock: "Lizard poisons Spock!"
+  Spock_Scissors: "Spock smashes Scissors!"
+  Scissors_Lizard: "Scissors decapitates Lizard!"
+  Lizard_Paper: "Lizard eats Paper!"
+  Paper_Spock: "Paper disproves Spock!"
+  Spock_Rock: "Spock vaporizes Rock!"
+  Rock_Scissors: "Rock crushes Scissors!"
