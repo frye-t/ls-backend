@@ -207,7 +207,7 @@ module AIPersonality
 
     def choose(moveset)
       move = moveset.get_move("rock")
-      if rng > 1.8
+      if rng > 0.8
         move = get_not_rock_paper(moveset)
       end
       move
