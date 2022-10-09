@@ -346,6 +346,8 @@ module TOHand
     total > HAND_MAX
   end
 
+  private
+
   # Only way I could think to get this method 10 lines or below
   # was by declaring the initial total in parameters
   # or by doing multiple inline if statements
