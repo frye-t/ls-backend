@@ -1,7 +1,7 @@
 # Twenty One Design
 
-*Generic module for message printing*
 **module Displayable**
+*Generic module for message printing*
 	Interface:
 	
 	- clear_screen
@@ -13,8 +13,8 @@
 	- puts_with_elipsis(msg)
 	- elipsis(optional: time)
 
-*Twenty-One specific game printer*
 **module TODisplayable**
+*Twenty-One specific game printer*
 	Includes Displayable
 	Interface:
 	
@@ -27,8 +27,8 @@
 	- display_calculating
 	- display_winner(winner)
 
-*Fluff messages for UX*
 **module KingDiceDialogue**
+*Fluff messages for UX*
 	Includes Displayable
 	Interface:
 
@@ -42,16 +42,15 @@
 	- display_player_win
 	- display_player_lose
 
-*Generic Input Validator*
 **module Inputtable**
+*Generic Input Validator*
 	Includes Displayable
 	Interface:
 	
 	- user_input(msg, condition, values)
 
-
-*Generic Hand behavior, to be used in other Card Games*
 **module Hand**
+*Generic Hand behavior, to be used in other Card Games*
 	Interface:
 	
 	- add_card
@@ -60,18 +59,18 @@
 	- any_face_down
 	- total [unimplemented - game specific]
 
-*Implements Hand to create 21 specific Behavior*
 **module TOHand**
+*Implements Hand to create 21 specific Behavior*
 	Interface:
 	
 	- total
 	- busted?
 
-*NameSpace for Card Game Participants*
 **module CardHolder**
+*NameSpace for Card Game Participants*
 
-*Generic Card Holder, to be used in other card games*
 **class Partcipant**
+*Generic Card Holder, to be used in other card games*
 	Attributes: cards[], score, name
 	Interface:
 	
@@ -82,23 +81,23 @@
 	- add_score
 	- > [unimplemented - game specific]
 
-*Inherits from Participant to define 21 specific Behavior*
 **class TOParticipant** < Participant
+*Inherits from Participant to define 21 specific Behavior*
 	Includes TOHand
 	Interface:
 	
 	- >
 
-*Inherits from TOPartcipant to distinguish CPU vs Human behavior*
 **class Player** < TOParticipant
+*Inherits from TOPartcipant to distinguish CPU vs Human behavior*
 	Includes Inputtable
 	Interface:
 	
 	- set_name
 	- take_turn
 
-*Inherits from TOPartcipant to distinguish CPU vs Human behavior*
 **class Dealer** < TOParticipant
+*Inherits from TOPartcipant to distinguish CPU vs Human behavior*
 	Attributes: title
 	Interface:
 	
@@ -107,16 +106,16 @@
 	- full_name
 	- take_turn
 
-*a collection of Card objects*
 **class Deck**
+*a collection of Card objects*
 	Attributes: Cards[]
 	Interface:
 	
 	- shuffle_cards!
 	- deal_card
 
-*a Playing Card*
 **class Card**
+*a Playing Card*
 	Attributes: Suit, Value, Face_Up
 	Interface:
 	
