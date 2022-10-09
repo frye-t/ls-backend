@@ -1,0 +1,6 @@
+input:
+  invalid_input: "That's not right! "
+  non_empty: "Your name can't be nothin', wheat!"
+  positive_numeric: "Must be a number greater than 0"
+  values: "Use a proper move, kid!"
+  yes_or_no: "It's yes or no, kid!"
