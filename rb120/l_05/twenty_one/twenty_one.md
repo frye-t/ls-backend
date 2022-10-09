@@ -1,7 +1,7 @@
 # Twenty One Design
 
-## **module Displayable**
-### *Generic module for message printing*
+### **module Displayable**
+#### *Generic module for message printing*
 ##### Interface:
 	
 	- clear_screen
