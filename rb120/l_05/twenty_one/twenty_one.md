@@ -2,7 +2,7 @@
 
 **module Displayable**
 *Generic module for message printing*
-	##### Interface:
+	#### Interface:
 	
 	- clear_screen
 	- anim_print(msg)
@@ -15,8 +15,8 @@
 
 **module TODisplayable**
 *Twenty-One specific game printer*
-	##### Includes Displayable
-	##### Interface:
+	#### Includes Displayable
+	#### Interface:
 	
 	- display_hands
 	- display_scores
