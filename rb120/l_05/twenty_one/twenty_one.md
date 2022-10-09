@@ -2,7 +2,7 @@
 
 **module Displayable**
 *Generic module for message printing*
-	#### Interface:
+##### Interface:
 	
 	- clear_screen
 	- anim_print(msg)
@@ -15,8 +15,8 @@
 
 **module TODisplayable**
 *Twenty-One specific game printer*
-	#### Includes Displayable
-	#### Interface:
+##### Includes Displayable
+##### Interface:
 	
 	- display_hands
 	- display_scores
@@ -29,8 +29,8 @@
 
 **module KingDiceDialogue**
 *Fluff messages for UX*
-	##### Includes Displayable
-	##### Interface:
+##### Includes Displayable
+##### Interface:
 
 	- display_welcome
 	- display_goodbye
@@ -44,14 +44,14 @@
 
 **module Inputtable**
 *Generic Input Validator*
-	##### Includes Displayable
-	##### Interface:
+##### Includes Displayable
+##### Interface:
 	
 	- user_input(msg, condition, values)
 
 **module Hand**
 *Generic Hand behavior, to be used in other Card Games*
-	##### Interface:
+##### Interface:
 	
 	- add_card
 	- show_cards
@@ -61,7 +61,7 @@
 
 **module TOHand**
 *Implements Hand to create 21 specific Behavior*
-	##### Interface:
+##### Interface:
 	
 	- total
 	- busted?
@@ -71,8 +71,8 @@
 
 **class Partcipant**
 *Generic Card Holder, to be used in other card games*
-	##### Attributes: cards[], score, name
-	##### Interface:
+##### Attributes: cards[], score, name
+##### Interface:
 	
 	- set_name
 	- to_s
@@ -83,23 +83,23 @@
 
 **class TOParticipant** < Participant
 *Inherits from Participant to define 21 specific Behavior*
-	##### Includes TOHand
-	##### Interface:
-	
+##### Includes TOHand
+##### Interface:
+
 	- >
 
 **class Player** < TOParticipant
 *Inherits from TOPartcipant to distinguish CPU vs Human behavior*
-	##### Includes Inputtable
-	##### Interface:
+##### Includes Inputtable
+##### Interface:
 	
 	- set_name
 	- take_turn
 
 **class Dealer** < TOParticipant
 *Inherits from TOPartcipant to distinguish CPU vs Human behavior*
-	##### Attributes: title
-	##### Interface:
+##### Attributes: title
+##### Interface:
 	
 	- set_name
 	- set_title
@@ -108,16 +108,16 @@
 
 **class Deck**
 *a collection of Card objects*
-	##### Attributes: Cards[]
-	##### Interface:
+##### Attributes: Cards[]
+##### Interface:
 	
 	- shuffle_cards!
 	- deal_card
 
 **class Card**
 *a Playing Card*
-	##### Attributes: Suit, Value, Face_Up
-	##### Interface:
+##### Attributes: Suit, Value, Face_Up
+##### Interface:
 	
 	- to_s
 	- flip!
