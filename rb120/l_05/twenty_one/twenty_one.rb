@@ -361,7 +361,7 @@ module TOHand
                end
     end
     total
-  end  
+  end
 end
 
 module CardHolder
